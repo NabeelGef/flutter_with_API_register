@@ -94,11 +94,11 @@ class _LoginState extends State<Login> {
                     ),
                     Container(
                         padding: EdgeInsets.all(20),
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             connectionWithDB();
                           },
-                          color: Colors.green,
+                          style: Colors.green,
                           child: Text(
                             "Login",
                             style: TextStyle(color: Colors.white),
@@ -150,6 +150,7 @@ class _LoginState extends State<Login> {
   }
 
   void showSnackBar(String msg) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: Text(msg)));
+    SnackBar snackBar = new SnackBar(content: Text(msg));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

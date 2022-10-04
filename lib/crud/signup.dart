@@ -15,7 +15,7 @@ class _SignupState extends State<Signup> {
   TextEditingController data_email = new TextEditingController();
   TextEditingController data_password = new TextEditingController();
   String name, password, email, msg = "";
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,11 +105,11 @@ class _SignupState extends State<Signup> {
                     ),
                     Container(
                         padding: EdgeInsets.all(20),
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             saveInDB();
                           },
-                          color: Colors.green,
+                          style: Colors.green,
                           child: Text(
                             "Signup",
                             style: TextStyle(color: Colors.white),
@@ -158,6 +158,7 @@ class _SignupState extends State<Signup> {
   }
 
   void showSnackBar(String msg) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: Text(msg)));
+    final SnackBar snackBar = new SnackBar(content: Text(msg));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
